@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import ToppingsSelect from './components/ToppingsSelect';
 import './style.css';
 
-const toppings = [
+export const toppings = [
   {
     name: 'Pepperoni',
     price: 1,
