@@ -11,23 +11,32 @@ const ToppingsSelect = ({ toppings }) => {
     newToppings[index].selected = newSelected;
     setCardToppings(newToppings);
   } 
-
+  
   const handlePriceChange = (index, newPrice) => {
-    const newPriceToppings = [...cardToppings];newPriceToppings[index].price = newPrice;
-    handlePriceChange(newPriceToppings);
+    const newPriceToppings = [...cardToppings];
+    newPriceToppings[index].price = newPrice;
+    console.log(newPrice);
+    setCardToppings(newPriceToppings);
   }
 
   let toppingSelected = 0;
-  cardToppings.forEach((topping) => toppingSelected += topping.selected)
+  cardToppings.forEach((topping) => toppingSelected += topping.selected);
+  
 
   let toppingPrice = 0;
-  cardToppings.forEach((topping) => toppingPrice += topping.newPrice)
-
+  cardToppings.forEach((topping) => { 
+    let newPrice = topping.price;
+    if (topping.selected === true) {
+      toppingPrice += newPrice}
+      else {
+        null
+      }
+ })
 
   return (
     <>
       <p>Choose as many toppings as you want</p>
-      <p>Selected toppings: {toppingSelected}, total price: {toppingPrice} Euro</p>
+      <p>Selected toppings: {toppingSelected}, total price: {Math.round(toppingPrice*1000)/1000} Euro</p>
         
       <div className="toppings">
         {toppings.map((topping, index) => (
