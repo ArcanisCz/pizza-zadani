@@ -31,7 +31,11 @@ const ToppingsSelect = ({ toppings }) => {
         
       <div className="toppings">
         {toppings.map((topping, index) => (
-          <Topping topping={topping} key={topping.name} checked={topping.selected} onCheck={(isChecked) => handleSelect(index, isChecked)}/>
+          <Topping topping={topping} 
+                    key={topping.name}
+                    vegan={topping.vegan} 
+                    checked={topping.selected} 
+                    onCheck={(isChecked) => handleSelect(index, isChecked)}/>
         ))}
       </div>
     </>

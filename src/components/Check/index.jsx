@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import './style.css';
+import { usePrefs } from "../../prefs-context";
 
-const Check = ({checked, onChange}) => {
+const Check = ({checked, onChange, vegan}) => {
  
   const handleClick = () => {
     onChange(!checked);
   };
 
+  const {veganOnly} = usePrefs();
+
+ 
+  if (veganOnly)
   return (
-    <button 
-      className="check"
-      onClick={handleClick}
-    >
-      {checked ? '✓' : ''}
-    </button>
-  )
-};
+      vegan ?  
+  <button className = "check" onClick={handleClick}>
+    {checked ? '✓' : ''}
+  </button>
+  :
+  <button className = "check--disabled check" disabled
+  ></button>)
+
+  return (
+  <button className = "check" onClick={handleClick}>
+  {checked ? '✓' : ''}
+</button>
+  );
+}
 
 export default Check;

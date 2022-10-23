@@ -14,7 +14,7 @@ html {
   margin-left: auto;
 }
 
-header {
+.heading {
   display: flex;
   flex-direction: column;
   align-items: center;
