@@ -1,0 +1,14 @@
+header {
+    text-align: right;
+}
+
+.select {
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.vegan {
+    color: green;
+}
