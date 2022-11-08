@@ -23,13 +23,15 @@ const ToppingsSelect = ({ toppings }) => {
   cardToppings.forEach((topping) => toppingSelected += topping.selected);
   
 
+
+ /* let toppingPrice = cardToppings.reduce(function ())*/
   let toppingPrice = 0;
   cardToppings.forEach((topping) => { 
-    let newPrice = topping.price;
+    
     if (topping.selected === true) {
-      toppingPrice += newPrice}
+      toppingPrice += topping.price}
       else {
-        null
+        
       }
  })
 
