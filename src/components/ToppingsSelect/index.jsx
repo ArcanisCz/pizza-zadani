@@ -4,6 +4,7 @@ import './style.css';
 
 const ToppingsSelect = ({ toppings }) => {
 
+
   const [toppingsToChoose, setToppingsToChoose] = useState(toppings);
 
   const handleSelect = (index, isChecked) => {
@@ -16,18 +17,17 @@ const ToppingsSelect = ({ toppings }) => {
   const selectedToppings = toppingsToChoose.filter((topping) => topping.selected === true)
 
   let totalCount = selectedToppings.length;
-  let totalPrice = 0;
 
-  selectedToppings.forEach((topping) => {
-    totalPrice += topping.price; 
-  });
+  const totalSum = selectedToppings.reduce((next,topping) => {
+    return next + topping.price; 
+  }, 0);
 
   
 
   return (
     <>
       <p>Choose as many toppings as you want</p>
-      <p>Selected toppings: {totalCount}, total price: {totalPrice.toFixed(2)} Euro</p>
+      <p>Selected toppings: {totalCount}, total price: {totalSum.toFixed(2)} Euro</p>
         
       <div className="toppings">
         {toppings.map((topping, index) => (

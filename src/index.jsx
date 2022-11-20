@@ -84,7 +84,7 @@ const App = () => {
 
 const [veganOnly, setVeganOnly] = useState({veganOnly : false});
 
-const changePrefs = (newPref) => setVeganOnly({...veganOnly, veganOnly: newPref});
+const changePrefs = (newPref) => setVeganOnly({...veganOnly, veganOnly : newPref});
 
   return (
 <PrefsContext.Provider value={{...veganOnly, changePrefs}}>
