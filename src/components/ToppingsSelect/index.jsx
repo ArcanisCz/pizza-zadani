@@ -19,12 +19,9 @@ const ToppingsSelect = ({ toppings }) => {
     setCardToppings(newPriceToppings);
   }
 
-  let toppingSelected = 0;
-  cardToppings.forEach((topping) => toppingSelected += topping.selected);
+  let toppingSelected =
+  cardToppings.filter((topping) => topping.selected).length;
   
-
-
- /* let toppingPrice = cardToppings.reduce(function ())*/
   let toppingPrice = 0;
   cardToppings.forEach((topping) => { 
     
@@ -33,17 +30,46 @@ const ToppingsSelect = ({ toppings }) => {
       else {
         
       }
+     } )
+   
+   /*
+  const addToppingPrice = ({},topping) => {
+      if (topping.selected === true) {
+      toppingPrice += topping.price}
+      else {
+        
+      }
+  }
+  let toppingPrice = cardToppings.reduce(addToppingPrice, 0, 0) 
+
+  /*let toppingPrice =
+  cardToppings.filter((topping) => { 
+    
+    if (topping.selected === true) {
+      toppingPrice += topping.price}
+      else {
+        
+      }
  })
+
+  let toppingPrice = 0;
+  cardToppings.forEach((topping) => { 
+    
+    if (topping.selected === true) {
+      toppingPrice += topping.price}
+      else {
+        
+      }
+ })*/
 
   return (
     <>
       <p>Choose as many toppings as you want</p>
-      <p>Selected toppings: {toppingSelected}, total price: {Math.round(toppingPrice*1000)/1000} Euro</p>
+      <p>Selected toppings: {toppingSelected}, total price: {toppingPrice.toFixed(2)} Euro</p>
         
       <div className="toppings">
         {toppings.map((topping, index) => (
-          <Topping topping={topping} key={topping.name} onToppingChange={(newSelected) => handleToppingChange(index, newSelected)} 
-          onPriceChange={(newPrice) => handlePriceChange(index, newPrice)} 
+          <Topping topping={topping} key={topping.name} onToppingChange={newSelected => handleToppingChange(index, newSelected)}  onPriceChange= {newPrice => handlePriceChange(index, newPrice)} 
           />
         ))}
       </div>  
