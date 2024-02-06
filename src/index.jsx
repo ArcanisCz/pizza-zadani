@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import ToppingsSelect from './components/ToppingsSelect';
+import Header from './components/Header';
 import './style.css';
+import { PrefsContext } from './pizza-context';
+import { usePrefs } from './pizza-context';
 
 const toppings = [
   {
@@ -79,16 +82,30 @@ const toppings = [
 ];
 
 const App = () => {
+  const [vegan, setVegan] = useState({vegan: true});
+ const [veganOnly, setVeganOnly] = useState(true);
+
+const setVeganChange = (newVegan) => { setVegan({
+  ...toppings,
+vegan: newVegan,
+});
+};
+
+const setVeganOnlyChoose = (newVeganOnly) => {
+setVeganOnly(newVeganOnly)
+}
+console.log(veganOnly)
   return (
+  <PrefsContext.Provider value={{...vegan, setVeganChange, ...veganOnly, setVeganOnlyChoose}  }> 
     <div className="container">
       <header>
-        <div className="pizza" />
-        <h1>Build your own pizza</h1>
+        <Header/>
       </header>
       <main>
         <ToppingsSelect toppings={toppings} />
       </main>
     </div>
+    </PrefsContext.Provider> 
   );
 };
 

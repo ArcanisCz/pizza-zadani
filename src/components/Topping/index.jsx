@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import Check from "../Check";
 import './style.css';
 
-const Topping = ({ topping }) => {
+const Topping = ({ topping, onToppingChange}) => { 
+
   return (
     <div className="topping">
-      <Check />
-      <span className="topping__content">
+      <Check checked={topping.selected} onChange={onToppingChange}/>
+      <span className="topping__content" >
         {topping.name}: {topping.price} €
-      </span>
+      </span> 
     </div>
   );
 };
 
 export default Topping;
+ 

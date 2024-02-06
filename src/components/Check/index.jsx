@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { usePrefs } from "../../pizza-context";
 import './style.css';
 
-const Check = () => {
-  const [checked, setChecked] = useState(false);
-  
+const Check = ({checked, onChange}) => {
+  const {vegan, veganOnly, setVeganChange } = usePrefs();
+
   const handleClick = () => {
-    setChecked(!checked);
-  };
-  
+    onChange(!checked);
+  }
+
   return (
-    <button 
-      className="check"
+    
+    <button  
+      className={ veganOnly === true && vegan === false? "check--disabled":"check"}
       onClick={handleClick}
     >
       {checked ? '✓' : ''}
     </button>
   )
+  
 };
-
+ 
 export default Check;

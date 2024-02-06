@@ -1,0 +1,15 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+}
+.pizza {
+  width: 17rem;
+  height: 13rem;
+  background-image: url(./img/pizza.svg);
+  background-size: contain;
+}
+#select {
+  margin: 10px;
+}
